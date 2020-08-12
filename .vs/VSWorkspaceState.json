@@ -3,12 +3,12 @@
     "",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\Burger",
-    "\\src\\components\\Burger\\BurgerIngredients",
-    "\\src\\components\\Layout",
+    "\\src\\components\\UI",
+    "\\src\\components\\UI\\Backdrop",
+    "\\src\\components\\UI\\Modal",
     "\\src\\containers",
     "\\src\\containers\\BurgerBuilder"
   ],
-  "SelectedNode": "\\src\\components\\Burger\\BurgerIngredients\\BurgerIngredients.module.css",
+  "SelectedNode": "\\src\\components\\UI\\Modal\\Modal.module.css",
   "PreviewInSolutionExplorer": true
 }

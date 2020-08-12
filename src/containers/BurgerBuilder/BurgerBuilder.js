@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Wrap from '../../hoc/Wrap';
 import Burger from '../../components/Burger/Burger';
 import BurgerControls from '../../components/Burger/BurgerControls/BurgerControls';
+import Modal from '../../components/UI/Modal/Modal';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICE = {
     salad: 0.5,
@@ -90,7 +92,9 @@ class BurgerBuilder extends Component {
         console.log(disabledInfo);
         return (
             <Wrap>
+                 <Modal><OrderSummary ingredients = {this.state.ingredients}/></Modal>
                 <Burger ingredients={this.state.ingredients} />
+               
                 <BurgerControls
                     ingredientsAdded={this.addIngredientsHandler}
                     ingredientsRemoved={this.removeIngedientsHandler}
