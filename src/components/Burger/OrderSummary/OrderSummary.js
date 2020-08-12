@@ -1,5 +1,6 @@
 import React from 'react';
 import Wrap from '../../../hoc/Wrap';
+import Button from '../../UI/Button/Button';
 
 const orderSummary = (props) => {
     const IngredientsSummary =  Object.keys(props.ingredients)
@@ -18,6 +19,8 @@ return(
             {IngredientsSummary}
         </ui>
         <p>Continue to Checkout ?</p>
+        <Button btnType='Danger' clicked ={props.orderCancel} >Cancel</Button>
+        <Button btnType='Success' clicked ={props.orderContinue} >Continue</Button>
     </Wrap>
 );
 
