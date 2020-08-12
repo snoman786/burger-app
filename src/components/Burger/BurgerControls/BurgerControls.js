@@ -10,12 +10,19 @@ const controls = [
     { label: 'Meat', type: 'meat' },
 ];
 
-const buildercontrols = () => {
+const buildercontrols = (props) => {
+    console.log(props.disabled);
     return (
         <div className={classes.BurgerControls}>
             {controls.map(ctrl =>
             (
-                <BurgerControl key={ctrl.label} label={ctrl.label} />
+                    <BurgerControl
+                        key={ctrl.label}
+                        label={ctrl.label}
+                        added={() => props.ingredientsAdded(ctrl.type)}
+                        removed={() => props.ingredientsRemoved(ctrl.type)}
+                        disabled={props.disabled[ctrl.type]}
+                    />
             )
 
             )}

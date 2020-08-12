@@ -3,6 +3,12 @@ import Wrap from '../../hoc/Wrap';
 import Burger from '../../components/Burger/Burger';
 import BurgerControls from '../../components/Burger/BurgerControls/BurgerControls';
 
+const INGREDIENT_PRICE = {
+    salad: 0.5,
+    bacon: 0.4,
+    cheese: 0.6,
+    meat: 1.3
+}
 class BurgerBuilder extends Component {
 
     state = {
@@ -10,14 +16,71 @@ class BurgerBuilder extends Component {
             salad: 0,
             bacon: 0,
             cheese: 0,
-            meat :0 
-        }
+            meat: 0
+        },
+        totalPrice: 4
+    };
+
+    addIngredientsHandler = (type) => {
+        console.log(type);
+        const oldCount = this.state.ingredients[type];
+        const updatedCount = oldCount + 1;
+        const updatedIngredients = {
+            ...this.state.ingredients
+        };
+
+        updatedIngredients[type] = updatedCount;
+        const priceAddition = INGREDIENT_PRICE[type];
+        const oldPrice = this.state.totalPrice;
+        const newPrice = oldPrice + priceAddition;
+
+        this.setState({
+            totalPrice: newPrice,
+            ingredients: updatedIngredients
+        });
+       
     }
+
+    removeIngedientsHandler = (type) => {
+        console.log(type);
+        const oldCount = this.state.ingredients[type];
+        if (oldCount <= 0) {
+            return;
+        }
+        const updatedCount = oldCount - 1;
+        const updatedIngredients = {
+            ...this.state.ingredients
+        };
+
+        updatedIngredients[type] = updatedCount;
+        const priceDeducted = INGREDIENT_PRICE[type];
+        const oldPrice = this.state.totalPrice;
+        const newPrice = oldPrice - priceDeducted;
+
+        this.setState({
+            totalPrice: newPrice,
+            ingredients: updatedIngredients
+        });
+    }
+
     render() {
+        const disabledInfo = {
+            ...this.state.ingredients
+        }
+
+        for (let key in disabledInfo) {
+            disabledInfo[key] = disabledInfo[key] <= 0
+        }
+
+        console.log(disabledInfo);
         return (
             <Wrap>
                 <Burger ingredients={this.state.ingredients} />
-                <BurgerControls/>
+                <BurgerControls
+                    ingredientsAdded={this.addIngredientsHandler}
+                    ingredientsRemoved={this.removeIngedientsHandler}
+                    disabled={disabledInfo}
+               />
             </Wrap>
             );
     }
