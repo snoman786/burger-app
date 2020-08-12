@@ -18,6 +18,7 @@ return(
         <ui>
             {IngredientsSummary}
         </ui>
+<p><strong>Total Price : {props.price}</strong></p>
         <p>Continue to Checkout ?</p>
         <Button btnType='Danger' clicked ={props.orderCancel} >Cancel</Button>
         <Button btnType='Success' clicked ={props.orderContinue} >Continue</Button>
