@@ -14,6 +14,7 @@ const buildercontrols = (props) => {
     console.log(props.disabled);
     return (
         <div className={classes.BurgerControls}>
+            <p> Burger Price : { props.price.toFixed(2)}</p>
             {controls.map(ctrl =>
             (
                     <BurgerControl
